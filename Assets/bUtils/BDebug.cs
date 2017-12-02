@@ -1,0 +1,48 @@
+﻿using System.Collections;
+using System.Collections.Generic;
+using UnityEngine;
+using UnityEngine.Events;
+
+public class BDebug : MonoBehaviour {
+	public UnityEvent debugCall;
+	public bool autodebug = true;
+	public bool draw = false;
+	public List<string> lines = new List<string>();
+	
+	static public BDebug instance;
+	
+	void Awake() {
+		instance = this;
+	}
+	
+	void Update() {
+		if (Input.GetKeyDown("f3")) {
+			draw = !draw;
+		}
+	}
+	
+	void OnGUI() {
+		if (draw) {
+			if (ProjectData.instance != null) {
+				lines.Add(ProjectData.instance.localizedName + " " + ProjectData.instance.version);
+				lines.Add("");
+			}
+			if (autodebug) {
+				if (BNetwork.instance != null) {
+					lines.Add("Listening:" + BNetwork.instance.listening + " Connected:" + BNetwork.instance.connected);
+				}
+			}
+			debugCall.Invoke();
+			GUILayout.BeginVertical("box");
+			foreach (string line in lines) {
+				GUILayout.Label(line);
+			}
+			GUILayout.EndVertical();
+			}
+		lines.Clear();
+	}
+	
+	public static void Write(string text) {
+		instance.lines.Add(text);
+	}
+}
