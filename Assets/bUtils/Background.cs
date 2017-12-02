@@ -22,7 +22,7 @@ public class Background : MonoBehaviour {
 		
 	}
 	
-	void Update() {
+	void LateUpdate() {
 		transform.position = target.position;
 		
 		foreach (BGLayer layer in layers) {

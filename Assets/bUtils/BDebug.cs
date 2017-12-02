@@ -27,7 +27,12 @@ public class BDebug : MonoBehaviour {
 				lines.Add(ProjectData.instance.localizedName + " " + ProjectData.instance.version);
 				lines.Add("");
 			}
+			
 			if (autodebug) {
+				if (UnityEngine.Networking.NetworkManager.singleton != null) {
+					lines.Add("Address:" + UnityEngine.Networking.NetworkManager.singleton.networkAddress + 
+					" Players:" + UnityEngine.Networking.NetworkManager.singleton.numPlayers);
+				}
 				if (BNetwork.instance != null) {
 					lines.Add("Listening:" + BNetwork.instance.listening + " Connected:" + BNetwork.instance.connected);
 				}

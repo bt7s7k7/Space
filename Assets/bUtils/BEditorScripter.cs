@@ -8,7 +8,7 @@ public class BEditorScripter : MonoBehaviour {
 	public UnityEvent onStart;
 	public UnityEvent onUpdate;
 	public UnityEvent onFixedUpdate;
-	public UnityEvent onRelay;
+	public UnityEvent onEvent;
 	
 	void Awake() {
 		onAwake.Invoke();
@@ -27,10 +27,23 @@ public class BEditorScripter : MonoBehaviour {
 	}
 	
 	public void Relay() {
-		onRelay.Invoke();
+		onEvent.Invoke();
+	}
+	
+	public void Quit() {
+		Application.Quit();
 	}
 	
 	public void Log(string text) {
 		Debug.Log(text);
+	}
+	
+	public void Wait(float seconds) {
+		StartCoroutine(CWait(seconds));
+	}
+	
+	IEnumerator CWait(float seconds) {
+		yield return new WaitForSeconds(seconds);
+		onEvent.Invoke();
 	}
 }
