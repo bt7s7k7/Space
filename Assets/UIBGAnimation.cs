@@ -12,6 +12,7 @@ public class UIBGAnimation : MonoBehaviour {
 	public float fadeTime = 0.1f;
 	public float moveTime = 0.5f;
 	public float animationTimer;
+	public bool setGameObjectAcive = true;
 	
 	void Awake() {
 		target = startingScreen;
@@ -36,6 +37,7 @@ public class UIBGAnimation : MonoBehaviour {
 		if (animationTimer <= fadeTime) {
 			screens[source].fade.alpha = 1 - animationTimer / fadeTime;
 		} else if (animationTimer > fadeTime) {
+			if (setGameObjectAcive) screens[source].fade.gameObject.SetActive(false);
 			screens[source].fade.alpha = 0;
 		}
 		if (animationTimer > fadeTime && animationTimer <= fadeTime + moveTime) {
@@ -46,6 +48,7 @@ public class UIBGAnimation : MonoBehaviour {
 			LerpSize(1);
 		}
 		if (animationTimer <= fadeTime * 2 + moveTime && animationTimer > fadeTime + moveTime) {
+			if (setGameObjectAcive) screens[target].fade.gameObject.SetActive(true);
 			screens[target].fade.alpha = (animationTimer - moveTime - fadeTime) / fadeTime;
 		} else if (animationTimer > fadeTime * 2 + moveTime) {
 			screens[target].fade.alpha = 1;

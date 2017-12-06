@@ -8,6 +8,8 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance;
 	[Header("Settings")]
 	public bool animateBG;
+	public Color[] colorPallete;
+	public Sprite[] playerIcons;
 	[Header("References")]
 	public Material turbolentMat;
 	public Material smoothMat;
