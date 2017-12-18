@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a82860e0398184a9c289ab299424bb, type: 3}
+  m_Name: Beetle
+  m_EditorClassIdentifier: 
+  label: Beetle
+  value: 100
+  level: 1
+  health: 100
+  shields: 0
+  shieldRechargeCooldown: 0
+  secondaryType: -1
+  maxSecondary: 0
+  secondaryCooldown: 0
+  hasWeapon: 1
+  shotCooldown: 100
+  color: {fileID: 21300000, guid: b72f407de18844c4ca1185963d2bf877, type: 3}
+  overlay: {fileID: 21300002, guid: b72f407de18844c4ca1185963d2bf877, type: 3}
+  detail: {fileID: 21300004, guid: b72f407de18844c4ca1185963d2bf877, type: 3}
+  meta: {fileID: 21300006, guid: b72f407de18844c4ca1185963d2bf877, type: 3}

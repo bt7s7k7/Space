@@ -2,18 +2,30 @@
 using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.Networking;
 
 public class GameManager : MonoBehaviour {
 	public static GameManager instance;
 	[Header("Settings")]
-	public bool animateBG;
 	public Color[] colorPallete;
 	public Sprite[] playerIcons;
+	public Faction[] factions;
 	[Header("References")]
 	public Material turbolentMat;
 	public Material smoothMat;
 	public Camera cam;
+	public UIBGAnimation UIBG;
+	public Player player;
+	public GameObject shipPrefab;
+	public Toggle keyboardModeToggle;
+	public GameObject movementJoystick;
+	public GameObject fireJoystick;
+	public GameObject secondaryDisp;
+	public Text secondaryAmount;
+	[Header("Data")]
+	public bool playMode;
+	
 	
 	void Reset() {
 		
@@ -24,14 +36,12 @@ public class GameManager : MonoBehaviour {
 	}
 	
 	void Start() {
-		
+		UpdateBGColors();
+		keyboardModeToggle.isOn = PlayerPrefs.GetInt("keyboardMode",0) == 1;
 	}
 	
 	void Update() {
-		UpdateBGColors();
-		if (animateBG) {
-			cam.transform.position += Vector3.right * Time.deltaTime * 5;
-		}
+		
 	}
 	
 	public void UpdateBGColors() {
@@ -39,8 +49,13 @@ public class GameManager : MonoBehaviour {
 		smoothMat.color = StarMap.GetCurrSector().smoothColor;
 	}
 	
-	void FixedUpdate() {
-		
+	public void SetGameMode() {
+		UIBG.GoToScreen(6);
+		playMode = true;
+	}
+	
+	public void SetKeyboardMode(bool mode) {
+		PlayerPrefs.SetInt("keyboardMode",(mode) ? 1 : 0);
 	}
 	
 	#if UNITY_EDITOR

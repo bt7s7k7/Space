@@ -52,6 +52,7 @@ public class UIBGAnimation : MonoBehaviour {
 			screens[target].fade.alpha = (animationTimer - moveTime - fadeTime) / fadeTime;
 		} else if (animationTimer > fadeTime * 2 + moveTime) {
 			screens[target].fade.alpha = 1;
+			if (setGameObjectAcive) screens[target].fade.gameObject.SetActive(true);
 		}
 	}
 	

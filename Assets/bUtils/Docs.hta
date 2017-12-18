@@ -1,7 +1,7 @@
 <html>
 	<head>
 		<title>Documentation</title>
-		<hta:application id="doscapp" applicationname="docs"">
+		<hta:application id="docsapp" applicationname="docs"">
 		<meta http-equiv="x-ua-compatible" content="ie=11">
 		<script>
 			var shown = []
@@ -22,13 +22,14 @@
 				font-family: "Open Sans",arial,x-locale-body,sans-serif;
 				font-style: normal;
 				padding-left: 0px;
-				padding-top: 0px
+				padding-top: 0px;
+				background: white
 			}
 			li, .back {
 				color: #ff8800
 			}
 			.black {
-				color: #000000
+				color: black
 			}
 			ul {
 				padding-left: 20px;
@@ -38,7 +39,8 @@
 			h1, h3 {
 				margin-bottom: 0px;
 				padding-bottom: 0px
-				padding-top: 20px
+				padding-top: 20px;
+				color: black
 			}
 			.code {
 				padding-left: 20px;
@@ -48,7 +50,8 @@
 				font-family: monospace;
 				overflow: auto;
 				white-space: nowrap;
-				height: 50px
+				height: 50px;
+				color: black
 			}
 		</style>
 	</head>
@@ -60,22 +63,56 @@
 <li onclick="hideAll();show('+BNetwork.PlayerData')">BNetwork.PlayerData</li>
 <li onclick="hideAll();show('+global')">global</li>
 <li onclick="hideAll();show('+BasicMsg')">BasicMsg</li>
+<li onclick="hideAll();show('+MeshWorks')">MeshWorks</li>
+<li onclick="hideAll();show('+MeshWorks.Triangle')">MeshWorks.Triangle</li>
 <li onclick="hideAll();show('+UIInvertColor')">UIInvertColor</li>
 </ul></div>
 <div id="+B" hidden>
 <h1>B</h1>
 <span class="back" onclick="hideAll();show('$index')">&#9668; Back to index</span>
 <p>Static helper class with very helpful functions</p>
-<h3>Functions</h3>
+<h3 class="black">Functions</h3>
 <ul>
-<li onclick="hideAll();show('-B:SerializeString')">SerializeString</li>
-<li onclick="hideAll();show('-B:DeserializeString')">DeserializeString</li>
-<li onclick="hideAll();show('-B:SerializeDict')">SerializeDict</li>
-<li onclick="hideAll();show('-B:DeserializeDict')">DeserializeDict</li>
-<li onclick="hideAll();show('-B:SerializeList')">SerializeList</li>
-<li onclick="hideAll();show('-B:Deserializelist')">Deserializelist</li>
-<li onclick="hideAll();show('-B:GetChildren')">GetChildren</li>
-<li onclick="hideAll();show('-B:DestroyChildren')">DestroyChildren</li>
+<li onclick="hideAll();show('-B:SerializeString')">
+<b>string</b> SerializeString(
+<b>string</b> text
+)
+</li>
+<li onclick="hideAll();show('-B:DeserializeString')">
+<b>string</b> DeserializeString(
+<b>string</b> serialized
+)
+</li>
+<li onclick="hideAll();show('-B:SerializeDict')">
+<b>string</b> SerializeDict(
+<b>Dictionary&lt;string,string&gt;</b> dictionary
+)
+</li>
+<li onclick="hideAll();show('-B:DeserializeDict')">
+<b>Dictionary&lt;string,string&gt;</b> DeserializeDict(
+<b>string</b> dict
+)
+</li>
+<li onclick="hideAll();show('-B:SerializeList')">
+<b>string</b> SerializeList(
+<b>List&lt;string&gt;</b> List
+)
+</li>
+<li onclick="hideAll();show('-B:Deserializelist')">
+<b>List&lt;string&gt;</b> Deserializelist(
+<b>string</b> list
+)
+</li>
+<li onclick="hideAll();show('-B:GetChildren')">
+<b>Transform[]</b> GetChildren(
+<b>Transform</b> target
+)
+</li>
+<li onclick="hideAll();show('-B:DestroyChildren')">
+<b>void</b> DestroyChildren(
+<b>Transform</b> target
+)
+</li>
 </ul>
 </div>
 <div id="-B:SerializeString" hidden>
@@ -86,9 +123,9 @@
 <b>string</b> text
 )
 </div>
-<p>Returns:</p>
+<p class="black">Returns:</p>
 <ul><li class="black"><b>string</b>: Serialized string</li></ul>
-<p>Arguments:</p>
+<p class="black">Arguments:</p>
 <ul><li class="black"><b>string</b> text: String to serialize</li></ul>
 <p>Serializes the provided string to hex ASCII codes.</p>
 </div>
@@ -100,9 +137,9 @@
 <b>string</b> serialized
 )
 </div>
-<p>Returns:</p>
+<p class="black">Returns:</p>
 <ul><li class="black"><b>string</b>: Deserialized string</li></ul>
-<p>Arguments:</p>
+<p class="black">Arguments:</p>
 <ul><li class="black"><b>string</b> serialized: Previously serialized string</li></ul>
 <p>Deserializes strings in a X2 ASCII format</p>
 </div>
@@ -114,9 +151,9 @@
 <b>Dictionary&lt;string,string&gt;</b> dictionary
 )
 </div>
-<p>Returns:</p>
+<p class="black">Returns:</p>
 <ul><li class="black"><b>string</b>: Serialized dictionary</li></ul>
-<p>Arguments:</p>
+<p class="black">Arguments:</p>
 <ul><li class="black"><b>Dictionary&lt;string,string&gt;</b> dictionary: <b>Dictionary</b> to serialize</li></ul>
 <p>A function to serialize a string <b>Dictionary</b>.</p>
 </div>
@@ -128,9 +165,9 @@
 <b>string</b> dict
 )
 </div>
-<p>Returns:</p>
+<p class="black">Returns:</p>
 <ul><li class="black"><b>Dictionary&lt;string,string&gt;</b>: Deserialized <b>Dictionary</b></li></ul>
-<p>Arguments:</p>
+<p class="black">Arguments:</p>
 <ul><li class="black"><b>string</b> dict: Previously serialized <b>Dictionary</b></li></ul>
 <p>Deserializes a <b>Dictionary</b> in a X2 ASCII format.</p>
 </div>
@@ -142,9 +179,9 @@
 <b>List&lt;string&gt;</b> List
 )
 </div>
-<p>Returns:</p>
+<p class="black">Returns:</p>
 <ul><li class="black"><b>string</b>: Serialized List</li></ul>
-<p>Arguments:</p>
+<p class="black">Arguments:</p>
 <ul><li class="black"><b>List&lt;string&gt;</b> List: <b>List</b> to serialize</li></ul>
 <p>A function to serialize a string <b>List</b>.</p>
 </div>
@@ -156,9 +193,9 @@
 <b>string</b> list
 )
 </div>
-<p>Returns:</p>
+<p class="black">Returns:</p>
 <ul><li class="black"><b>List&lt;string&gt;</b>: Deserialized <b>List</b></li></ul>
-<p>Arguments:</p>
+<p class="black">Arguments:</p>
 <ul><li class="black"><b>string</b> list: Previously serialized <b>List</b></li></ul>
 <p>Deserializes a <b>List</b> in a X2 ASCII format.</p>
 </div>
@@ -170,9 +207,9 @@
 <b>Transform</b> target
 )
 </div>
-<p>Returns:</p>
+<p class="black">Returns:</p>
 <ul><li class="black"><b>Transform[]</b>: Children of the provided <b>Transform</b></li></ul>
-<p>Arguments:</p>
+<p class="black">Arguments:</p>
 <ul><li class="black"><b>Transform</b> target: The <b>Transform</b> to get children of</li></ul>
 <p>Returns all children of the provided <b>Transform</b></p>
 </div>
@@ -184,9 +221,9 @@
 <b>Transform</b> target
 )
 </div>
-<p>Returns:</p>
+<p class="black">Returns:</p>
 <ul><li class="black"><b>void</b></li></ul>
-<p>Arguments:</p>
+<p class="black">Arguments:</p>
 <ul><li class="black"><b>Transform</b> target: The <b>Transform</b> to remove children of</li></ul>
 <p>Removes all children of the provided <b>Transform</b></p>
 </div>
@@ -194,21 +231,51 @@
 <h1>BNetwork</h1>
 <span class="back" onclick="hideAll();show('$index')">&#9668; Back to index</span>
 <p>Component for establishing lowlevel connections between computers and basic msg exchange.</p>
-<h3>Methods</h3>
+<h3 class="black">Methods</h3>
 <ul>
-<li onclick="hideAll();show('-BNetwork:Listen')">Listen</li>
-<li onclick="hideAll();show('-BNetwork:Connect')">Connect</li>
-<li onclick="hideAll();show('-BNetwork:StartLocalPlayer')">StartLocalPlayer</li>
-<li onclick="hideAll();show('-BNetwork:Broadcast')">Broadcast</li>
-<li onclick="hideAll();show('-BNetwork:BroadcastFromServer')">BroadcastFromServer</li>
+<li onclick="hideAll();show('-BNetwork:Listen')">
+<b>void</b> Listen(
+
+)
+</li>
+<li onclick="hideAll();show('-BNetwork:Connect')">
+<b>void</b> Connect(
+<b>string</b> ip
+)
+</li>
+<li onclick="hideAll();show('-BNetwork:StartLocalPlayer')">
+<b>void</b> StartLocalPlayer(
+
+)
+</li>
+<li onclick="hideAll();show('-BNetwork:Broadcast')">
+<b>void</b> Broadcast(
+<b>BasicMsg</b> message
+)
+</li>
+<li onclick="hideAll();show('-BNetwork:BroadcastFromServer')">
+<b>void</b> BroadcastFromServer(
+<b>BasicMsg</b> message
+)
+</li>
 </ul>
-<h3>Properties</h3>
+<h3 class="black">Properties</h3>
 <ul>
-<li onclick="hideAll();show('-BNetwork:client')">client</li>
-<li onclick="hideAll();show('-BNetwork:instance')">instance</li>
-<li onclick="hideAll();show('-BNetwork:port')">port</li>
-<li onclick="hideAll();show('-BNetwork:listening')">listening</li>
-<li onclick="hideAll();show('-BNetwork:connected')">connected</li>
+<li onclick="hideAll();show('-BNetwork:client')">
+<b>NetworkClient</b> client = <i>null</i>
+</li>
+<li onclick="hideAll();show('-BNetwork:instance')">
+<b>BNetwork</b> instance = <i>null</i>
+</li>
+<li onclick="hideAll();show('-BNetwork:port')">
+<b>int</b> port = <i>7777</i>
+</li>
+<li onclick="hideAll();show('-BNetwork:listening')">
+<b>bool</b> listening = <i>false</i>
+</li>
+<li onclick="hideAll();show('-BNetwork:connected')">
+<b>BasicMsg</b> connected = <i>null</i>
+</li>
 </ul>
 </div>
 <div id="-BNetwork:Listen" hidden>
@@ -219,7 +286,7 @@
 
 )
 </div>
-<p>Returns:</p>
+<p class="black">Returns:</p>
 <ul><li class="black"><b>void</b></li></ul>
 <p>Starts the server listening.</p>
 </div>
@@ -231,9 +298,9 @@
 <b>string</b> ip
 )
 </div>
-<p>Returns:</p>
+<p class="black">Returns:</p>
 <ul><li class="black"><b>void</b></li></ul>
-<p>Arguments:</p>
+<p class="black">Arguments:</p>
 <ul><li class="black"><b>string</b> ip: The ip to connect to</li></ul>
 <p>Connects the client to a server on the provided ip address.</p>
 </div>
@@ -245,7 +312,7 @@
 
 )
 </div>
-<p>Returns:</p>
+<p class="black">Returns:</p>
 <ul><li class="black"><b>void</b></li></ul>
 <p>Starts a server using Listen and connect to it.</p>
 </div>
@@ -257,9 +324,9 @@
 <b>BasicMsg</b> message
 )
 </div>
-<p>Returns:</p>
+<p class="black">Returns:</p>
 <ul><li class="black"><b>void</b></li></ul>
-<p>Arguments:</p>
+<p class="black">Arguments:</p>
 <ul><li class="black"><b>BasicMsg</b> message: Message to send</li></ul>
 <p>Sends a message to all connected clients.</p>
 </div>
@@ -271,9 +338,9 @@
 <b>BasicMsg</b> message
 )
 </div>
-<p>Returns:</p>
+<p class="black">Returns:</p>
 <ul><li class="black"><b>void</b></li></ul>
-<p>Arguments:</p>
+<p class="black">Arguments:</p>
 <ul><li class="black"><b>BasicMsg</b> message: Message to send</li></ul>
 <p>Sends a message to the server.</p>
 </div>
@@ -325,9 +392,11 @@
 <h1>global</h1>
 <span class="back" onclick="hideAll();show('$index')">&#9668; Back to index</span>
 <p>A global object whitch members acessible anywhere.</p>
-<h3>Properties</h3>
+<h3 class="black">Properties</h3>
 <ul>
-<li onclick="hideAll();show('-global:ip')">ip</li>
+<li onclick="hideAll();show('-global:ip')">
+<b>string</b> ip = <i>null</i>
+</li>
 </ul>
 </div>
 <div id="-global:ip" hidden>
@@ -341,16 +410,28 @@
 <div id="+BasicMsg" hidden>
 <h1>BasicMsg</h1>
 <span class="back" onclick="hideAll();show('$index')">&#9668; Back to index</span>
-<h3>Functions</h3>
+<h3 class="black">Functions</h3>
 <ul>
-<li onclick="hideAll();show('-BasicMsg:BasicMsg')">BasicMsg</li>
+<li onclick="hideAll();show('-BasicMsg:BasicMsg')">
+<b>new</b> BasicMsg(
+<b>string</b> type, <b>string</b> target, <b>string</b> message
+)
+</li>
 </ul>
-<h3>Properties</h3>
+<h3 class="black">Properties</h3>
 <ul>
-<li onclick="hideAll();show('-BasicMsg:type')">type</li>
-<li onclick="hideAll();show('-BasicMsg:target')">target</li>
-<li onclick="hideAll();show('-BasicMsg:msg')">msg</li>
-<li onclick="hideAll();show('-BasicMsg:source')">source</li>
+<li onclick="hideAll();show('-BasicMsg:type')">
+<b>string</b> type = <i>null</i>
+</li>
+<li onclick="hideAll();show('-BasicMsg:target')">
+<b>string</b> target = <i>null</i>
+</li>
+<li onclick="hideAll();show('-BasicMsg:msg')">
+<b>string</b> msg = <i>null</i>
+</li>
+<li onclick="hideAll();show('-BasicMsg:source')">
+<b>int</b> source = <i>null</i>
+</li>
 </ul>
 </div>
 <div id="-BasicMsg:BasicMsg" hidden>
@@ -361,8 +442,8 @@
 <b>string</b> type, <b>string</b> target, <b>string</b> message
 )
 </div>
-<p>Returns:</p>
-<p>Arguments:</p>
+<p class="black">Returns:</p>
+<p class="black">Arguments:</p>
 <ul><li class="black"><b>string</b> type: Message type</li></ul>
 <ul><li class="black"><b>string</b> target: Message target</li></ul>
 <ul><li class="black"><b>string</b> message: Message message</li></ul>
@@ -395,14 +476,87 @@
 <b>int</b> source = <i>null</i>
 </div>
 </div>
+<div id="+MeshWorks" hidden>
+<h1>MeshWorks</h1>
+<span class="back" onclick="hideAll();show('$index')">&#9668; Back to index</span>
+<p>A static class to help with mesh creation.</p>
+</div>
+<div id="+MeshWorks.Triangle" hidden>
+<h1>MeshWorks.Triangle</h1>
+<span class="back" onclick="hideAll();show('$index')">&#9668; Back to index</span>
+<p>Class describing a single triangle</p>
+<h3 class="black">Functions</h3>
+<ul>
+<li onclick="hideAll();show('-MeshWorks.Triangle:Triangle')">
+<b>new</b> MeshWorks.Triangle(
+<b>Vector3</b> a, <b>Vector3</b> b, <b>Vector3</b> c
+)
+</li>
+</ul>
+<h3 class="black">Properties</h3>
+<ul>
+<li onclick="hideAll();show('-MeshWorks.Triangle:a')">
+<b>Vector3</b> a = <i>null</i>
+</li>
+<li onclick="hideAll();show('-MeshWorks.Triangle:b')">
+<b>Vector3</b> b = <i>null</i>
+</li>
+<li onclick="hideAll();show('-MeshWorks.Triangle:c')">
+<b>Vector3</b> c = <i>null</i>
+</li>
+</ul>
+</div>
+<div id="-MeshWorks.Triangle:Triangle" hidden>
+<h1>MeshWorks.Triangle.Triangle</h1>
+<span class="back" onclick="hideAll();show('+MeshWorks.Triangle')">&#9668; Back to class</span><br />
+<div class="code">
+<b>new</b> MeshWorks.Triangle(
+<b>Vector3</b> a, <b>Vector3</b> b, <b>Vector3</b> c
+)
+</div>
+<p class="black">Returns:</p>
+<p class="black">Arguments:</p>
+<ul><li class="black"><b>Vector3</b> a: First point</li></ul>
+<ul><li class="black"><b>Vector3</b> b: Second point</li></ul>
+<ul><li class="black"><b>Vector3</b> c: Third point</li></ul>
+<p>Creates a new triangle with three points.</p>
+</div>
+<div id="-MeshWorks.Triangle:a" hidden>
+<h1>MeshWorks.Triangle.a</h1>
+<span class="back" onclick="hideAll();show('+MeshWorks.Triangle')">&#9668; Back to class</span><br />
+<div class="code">
+<b>Vector3</b> a = <i>null</i>
+</div>
+<p>First point</p>
+</div>
+<div id="-MeshWorks.Triangle:b" hidden>
+<h1>MeshWorks.Triangle.b</h1>
+<span class="back" onclick="hideAll();show('+MeshWorks.Triangle')">&#9668; Back to class</span><br />
+<div class="code">
+<b>Vector3</b> b = <i>null</i>
+</div>
+<p>Second point</p>
+</div>
+<div id="-MeshWorks.Triangle:c" hidden>
+<h1>MeshWorks.Triangle.c</h1>
+<span class="back" onclick="hideAll();show('+MeshWorks.Triangle')">&#9668; Back to class</span><br />
+<div class="code">
+<b>Vector3</b> c = <i>null</i>
+</div>
+<p>Third point</p>
+</div>
 <div id="+UIInvertColor" hidden>
 <h1>UIInvertColor</h1>
 <span class="back" onclick="hideAll();show('$index')">&#9668; Back to index</span>
 <p>UI helper class for dynamic contrast.</p>
-<h3>Properties</h3>
+<h3 class="black">Properties</h3>
 <ul>
-<li onclick="hideAll();show('-UIInvertColor:source')">source</li>
-<li onclick="hideAll();show('-UIInvertColor:target')">target</li>
+<li onclick="hideAll();show('-UIInvertColor:source')">
+<b>Graphic</b> source = <i>null</i>
+</li>
+<li onclick="hideAll();show('-UIInvertColor:target')">
+<b>Graphic</b> target = <i>null</i>
+</li>
 </ul>
 </div>
 <div id="-UIInvertColor:source" hidden>

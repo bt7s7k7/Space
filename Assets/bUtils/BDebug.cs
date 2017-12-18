@@ -8,6 +8,8 @@ public class BDebug : MonoBehaviour {
 	public bool autodebug = true;
 	public bool draw = false;
 	public List<string> lines = new List<string>();
+	public delegate void DebugCall();
+	public DebugCall debugCallback;
 	
 	static public BDebug instance;
 	
@@ -37,6 +39,7 @@ public class BDebug : MonoBehaviour {
 					lines.Add("Listening:" + BNetwork.instance.listening + " Connected:" + BNetwork.instance.connected);
 				}
 			}
+			debugCallback();
 			debugCall.Invoke();
 			GUILayout.BeginVertical("box");
 			foreach (string line in lines) {
