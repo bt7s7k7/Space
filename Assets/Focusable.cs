@@ -23,4 +23,6 @@ public class Focusable : NetworkBehaviour {
 	public bool menu;
 	[SyncVar]
 	public int secondaryAmount;
+	[SyncVar]
+	public float secondaryCooldown;
 }

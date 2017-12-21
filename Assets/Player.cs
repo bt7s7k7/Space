@@ -10,19 +10,25 @@ public class Player : NetworkBehaviour {
 	
 	void Start() {
 		if (isLocalPlayer) {
+			GameManager.instance.player = this;
 			faction.InitLocal();
 			GameManager.instance.SetGameMode();
-			GameManager.instance.player = this;
 		}
 	}
 	
 	void Update() {
 		if (isLocalPlayer) {
-			GameManager.instance.movementJoystick.SetActive(focused.canMove);
-			GameManager.instance.fireJoystick.SetActive(focused.canFire);
-			GameManager.instance.secondaryDisp.SetActive(focused.canSecondary);
-			GameManager.instance.secondaryAmount.text = focused.secondaryAmount.ToString();
+			if (focused != null && PlayerPrefs.GetInt("keyboardMode",0) == 0) {
+				GameManager.instance.movementJoystick.SetActive(focused.canMove);
+				GameManager.instance.fireJoystick.SetActive(focused.canFire);
+				GameManager.instance.secondaryDisp.SetActive(focused.canSecondary);
+				GameManager.instance.secondaryAmount.text = focused.secondaryAmount.ToString();
+				GameManager.instance.secondaryCooldown.fillAmount = focused.secondaryCooldown;
+			} else {
+				GameManager.instance.movementJoystick.SetActive(false);
+				GameManager.instance.fireJoystick.SetActive(false);
+				GameManager.instance.secondaryDisp.SetActive(false);
+			}
 		}
 	}
-	
 }

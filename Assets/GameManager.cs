@@ -11,6 +11,7 @@ public class GameManager : MonoBehaviour {
 	public Color[] colorPallete;
 	public Sprite[] playerIcons;
 	public Faction[] factions;
+	public GameObject[] shipEntityPrefabs;
 	[Header("References")]
 	public Material turbolentMat;
 	public Material smoothMat;
@@ -19,13 +20,14 @@ public class GameManager : MonoBehaviour {
 	public Player player;
 	public GameObject shipPrefab;
 	public Toggle keyboardModeToggle;
+	public GameObject controlObject;
 	public GameObject movementJoystick;
 	public GameObject fireJoystick;
 	public GameObject secondaryDisp;
+	public Image secondaryCooldown;
 	public Text secondaryAmount;
 	[Header("Data")]
 	public bool playMode;
-	
 	
 	void Reset() {
 		
@@ -52,6 +54,7 @@ public class GameManager : MonoBehaviour {
 	public void SetGameMode() {
 		UIBG.GoToScreen(6);
 		playMode = true;
+		controlObject.SetActive(PlayerPrefs.GetInt("keyboardMode",0) == 0);
 	}
 	
 	public void SetKeyboardMode(bool mode) {

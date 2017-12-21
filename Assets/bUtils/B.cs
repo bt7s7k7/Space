@@ -107,6 +107,14 @@ public static class B {
 		}
 	}
 	
+	static public Texture2D SpriteToTexture(Sprite sprite) {
+		Rect rect = sprite.rect;
+		Texture2D ret = new Texture2D((int)rect.width,(int)rect.height);
+		ret.SetPixels(sprite.texture.GetPixels((int)rect.x,(int)rect.y,(int)rect.width,(int)rect.height));
+		ret.Apply();
+		return ret;
+	}
+	
 	#if UNITY_EDITOR
 	[MenuItem("CONTEXT/MeshFilter/Save mesh...")]
 	static void SaveMesh(MenuCommand context) {

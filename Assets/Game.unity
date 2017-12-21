@@ -2059,19 +2059,27 @@ MonoBehaviour:
     iconColor: 3
     iconType: 2
     side: 0
-    playerOwned: 0
+    playerOwner: -1
   - label: Imperium
     bgColor: 3
     iconColor: 6
     iconType: 8
     side: 1
-    playerOwned: 0
+    playerOwner: -1
   - label: Pirates
     bgColor: 0
     iconColor: 4
     iconType: 3
     side: 2
-    playerOwned: 0
+    playerOwner: -1
+  shipEntityPrefabs:
+  - {fileID: 1615386460371622, guid: 0b4f46a568d30a44abfe8a6db8e2659e, type: 2}
+  - {fileID: 1425128388041282, guid: d07e45c7848997443b3463500375a374, type: 2}
+  - {fileID: 1986062963574086, guid: 34efca76f42c8f64d82052d2885b792e, type: 2}
+  - {fileID: 1033725209430744, guid: cbc47e19293ce6243903455d4972a6ed, type: 2}
+  - {fileID: 1149631430404236, guid: 89162392db3d82b45807cbb98662a197, type: 2}
+  - {fileID: 1390433129900302, guid: 387e45a068609534a8f5fc0222b9dd52, type: 2}
+  - {fileID: 1960144278843370, guid: cbbb67404b6f7894087440948f1f94d4, type: 2}
   turbolentMat: {fileID: 2100000, guid: dbc966a776bdb2648a0d6fcd5763cfb2, type: 2}
   smoothMat: {fileID: 2100000, guid: c223ce1ef779d294db2d91643f64afb6, type: 2}
   cam: {fileID: 673029861}
@@ -2079,6 +2087,12 @@ MonoBehaviour:
   player: {fileID: 0}
   shipPrefab: {fileID: 1860492646510860, guid: c2840260c50699041aaf23b5fbc4a1ef, type: 2}
   keyboardModeToggle: {fileID: 2118187093}
+  controlObject: {fileID: 603015371}
+  movementJoystick: {fileID: 1568768628}
+  fireJoystick: {fileID: 2065010005}
+  secondaryDisp: {fileID: 2028011901}
+  secondaryCooldown: {fileID: 0}
+  secondaryAmount: {fileID: 114365631}
   playMode: 0
 --- !u!4 &502530773
 Transform:
@@ -2711,7 +2725,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &603015372
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8027,6 +8041,7 @@ GameObject:
   serializedVersion: 5
   m_Component:
   - component: {fileID: 2028011902}
+  - component: {fileID: 2028011903}
   m_Layer: 0
   m_Name: SecondaryFire
   m_TagString: Untagged
@@ -8052,9 +8067,50 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 1, y: 0}
   m_AnchorMax: {x: 1, y: 0}
-  m_AnchoredPosition: {x: -6.4, y: 141.78}
+  m_AnchoredPosition: {x: -6.399994, y: 141.78}
   m_SizeDelta: {x: 70, y: 70}
   m_Pivot: {x: 1, y: 0}
+--- !u!114 &2028011903
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2028011901}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 1392445389, guid: f70555f144d8491a825f0804e09c671c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Navigation:
+    m_Mode: 3
+    m_SelectOnUp: {fileID: 0}
+    m_SelectOnDown: {fileID: 0}
+    m_SelectOnLeft: {fileID: 0}
+    m_SelectOnRight: {fileID: 0}
+  m_Transition: 1
+  m_Colors:
+    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
+    m_HighlightedColor: {r: 1, g: 1, b: 1, a: 1}
+    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
+    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
+    m_ColorMultiplier: 1
+    m_FadeDuration: 0.1
+  m_SpriteState:
+    m_HighlightedSprite: {fileID: 0}
+    m_PressedSprite: {fileID: 0}
+    m_DisabledSprite: {fileID: 0}
+  m_AnimationTriggers:
+    m_NormalTrigger: Normal
+    m_HighlightedTrigger: Highlighted
+    m_PressedTrigger: Pressed
+    m_DisabledTrigger: Disabled
+  m_Interactable: 1
+  m_TargetGraphic: {fileID: 1447137696}
+  m_OnClick:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
+      Culture=neutral, PublicKeyToken=null
 --- !u!1 &2045051875
 GameObject:
   m_ObjectHideFlags: 0

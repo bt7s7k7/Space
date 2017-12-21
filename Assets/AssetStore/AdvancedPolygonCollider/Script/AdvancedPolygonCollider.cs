@@ -341,7 +341,7 @@ namespace DigitalRuby.AdvancedPolygonCollider
 
         private void OnDrawGizmos()
         {
-            UnityEditor.Handles.BeginGUI();
+           /* UnityEditor.Handles.BeginGUI();
             GUI.color = Color.white;
             string text = " Vertices: " + VerticesCount + " ";
             var view = UnityEditor.SceneView.currentDrawingSceneView;
@@ -351,7 +351,7 @@ namespace DigitalRuby.AdvancedPolygonCollider
             Rect rect = new Rect(screenPos.x - (size.x / 2), -screenPos.y + view.position.height + 4, size.x, size.y);
             GUI.Box(rect, GUIContent.none);
             GUI.Label(rect, text);
-            UnityEditor.Handles.EndGUI();
+            UnityEditor.Handles.EndGUI();*/
         }
 
         private void AddEditorCache(ref PolygonParameters p, List<Vector2[]> list)

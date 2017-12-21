@@ -59,6 +59,7 @@ GameObject:
   - component: {fileID: 114295970693258990}
   - component: {fileID: 114069081485477012}
   - component: {fileID: 114573298170870440}
+  - component: {fileID: 114428753156829318}
   m_Layer: 0
   m_Name: ShipPrefab
   m_TagString: Untagged
@@ -392,7 +393,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1860492646510860}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5760f3341a096df489ff371946e237bb, type: 3}
   m_Name: 
@@ -403,7 +404,7 @@ MonoBehaviour:
     iconColor: 0
     iconType: 0
     side: 0
-    playerOwned: 0
+    playerOwner: -1
   prototype: {fileID: 0}
   hull: 0
   shields: 0
@@ -413,6 +414,32 @@ MonoBehaviour:
   detail: {fileID: 212854793656674786}
   overlay: {fileID: 212207180796013190}
   color: {fileID: 212737422780456488}
+  focus: {fileID: 114428753156829318}
+  entities: []
+--- !u!114 &114428753156829318
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1860492646510860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1790c1697353db34fa48e1e39fd9b600, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  multipleUsers: 0
+  used: 0
+  canMove: 1
+  canFire: 0
+  canSecondary: 0
+  canPlayerControll: 1
+  fireDirection: {x: 0, y: 0, z: 0}
+  moveDirection: {x: 0, y: 0, z: 0}
+  fire: 0
+  secondaryFire: 0
+  menu: 0
+  secondaryAmount: 0
+  secondaryCooldown: 0
 --- !u!114 &114518245013215916
 MonoBehaviour:
   m_ObjectHideFlags: 1

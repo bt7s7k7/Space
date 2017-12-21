@@ -23,9 +23,10 @@ public class Ship : NetworkBehaviour {
 	public SpriteRenderer color;
 	public Focusable focus;
 	
+	public ShipEntity[] entities;
+	
 	[Command]
 	public void CmdInit(Faction faction,string source) {
-		Debug.Log("Server init");
 		owner = faction;
 		ShipSO p_ = ShipSO.shipTypes[source];
 		hull = p_.health;
@@ -35,12 +36,16 @@ public class Ship : NetworkBehaviour {
 	}
 	
 	void Update() {
-		focus.secondaryAmount = secondaryAmount;
+		if (isServer) {
+			focus.secondaryAmount = secondaryAmount;
+			if (prototype != null) {
+				focus.secondaryCooldown = (Time.time * 1000 - (float)lastSecondary) / (float)prototype.secondaryCooldown;
+			}
+		}
 	}
 	
 	[ClientRpc]
 	public void RpcInit(Faction faction,string source) {
-		Debug.Log("ClientInit");
 		prototype = ShipSO.shipTypes[source];
 		detail.sprite = prototype.detail;
 		overlay.sprite = prototype.overlay;
@@ -48,5 +53,9 @@ public class Ship : NetworkBehaviour {
 		color.color = GameManager.instance.colorPallete[faction.bgColor];
 		focus.canFire = prototype.hasWeapon;
 		focus.canSecondary = prototype.secondaryType >= 0;
+		
+		prototype.SpawnEntities(transform,this);
+		entities = GetComponentsInChildren<ShipEntity>();
+		this.enabled = true;
 	}
 }

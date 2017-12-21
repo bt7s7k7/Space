@@ -10,7 +10,8 @@ public class Faction {
 	public int iconColor;
 	public int iconType;
 	public int side;
-	public bool playerOwned;
+	public int playerOwner = -1;
+	
 	
 	public void InitLocal() {
 		label = PlayerPrefs.GetString("playerName","");
@@ -18,5 +19,10 @@ public class Faction {
 		iconColor = PlayerPrefs.GetInt("playerIconColor",0);
 		iconType = PlayerPrefs.GetInt("playerIconType",0);
 		side = PlayerPrefs.GetInt("playerFactionSide",0);
+		playerOwner = (int)GameManager.instance.player.netId.Value;
+	}
+	
+	public void Register() {
+		
 	}
 }
