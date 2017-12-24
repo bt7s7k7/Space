@@ -131,13 +131,7 @@ namespace CnControls
             CnInputManager.RegisterVirtualAxis(VerticalAxis);
         }
 
-        private void OnDisable()
-        {
-            // When we disable, we just unregister our axis
-            // It also happens before the game object is Destroyed
-            CnInputManager.UnregisterVirtualAxis(HorizintalAxis);
-            CnInputManager.UnregisterVirtualAxis(VerticalAxis);
-        }
+        
 
         public virtual void OnDrag(PointerEventData eventData)
         {
@@ -207,8 +201,27 @@ namespace CnControls
             VerticalAxis.Value = verticalValue;
         }
 
-        public void OnPointerUp(PointerEventData eventData)
+        public void OnPointerUp(PointerEventData eventData) {
+			// When we lift our finger, we reset everything to the initial state
+            _baseTransform.anchoredPosition = _initialBasePosition;
+            _stickTransform.anchoredPosition = _initialStickPosition;
+            _intermediateStickPosition = _initialStickPosition;
+
+            HorizintalAxis.Value = VerticalAxis.Value = 0f;
+
+            // We also hide it if we specified that behaviour
+            if (HideOnRelease)
+            {
+                Hide(true);
+            }
+		}
+		private void OnDisable()
         {
+            // When we disable, we just unregister our axis
+            // It also happens before the game object is Destroyed
+            CnInputManager.UnregisterVirtualAxis(HorizintalAxis);
+            CnInputManager.UnregisterVirtualAxis(VerticalAxis);
+			
             // When we lift our finger, we reset everything to the initial state
             _baseTransform.anchoredPosition = _initialBasePosition;
             _stickTransform.anchoredPosition = _initialStickPosition;

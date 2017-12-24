@@ -1,23 +1,31 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.Networking;
 
 [CreateAssetMenu(fileName = "New Ship",menuName = "ShipSO",order = 4)]
 public class ShipSO : ScriptableObject {
 	public string label = "New Ship";
+	public float camSize = 5;
 	public int value;
 	public int level;
 	public int health;
-	public int shields;
-	public int shieldRechargeCooldown;
+	public int shield;
+	public float shieldRecharge;
 	public int secondaryType = -1;
 	public int maxSecondary;
 	public int secondaryCooldown;
 	public bool hasWeapon;
 	public int shotCooldown;
 	public int shotDamage;
+	public float forwardSpeed = 50;
+	public float lateralSpeed = 10;
+	public float maxSpeed = 5;
+	public float slowdownSpeed = 10;
+	public float rotationSpeed = 0.1f;
 	public List<ShipEntityPrototype> entities;
 	
 	public Sprite color;
@@ -27,7 +35,20 @@ public class ShipSO : ScriptableObject {
 	public static Dictionary<string,ShipSO> shipTypes = new Dictionary<string,ShipSO>();
 	
 	public void OnEnable() {
-		shipTypes.Add(label,this);
+		Register();
+	}
+	
+	public void Register() {
+		if (!shipTypes.ContainsKey(label))
+			shipTypes.Add(label,this);
+	}
+	
+	public void Awake() {
+		Register();
+	}
+	
+	public ShipSO() {
+		Register();
 	}
 	
 	public GameObject Spawn(Faction faction,Vector3 position) {
@@ -67,6 +88,17 @@ public class ShipSO : ScriptableObject {
 			ret.Add(entity.Spawn(parent,ship,ToLocalPos(entity.pos.x,color.rect.height - entity.pos.y)));
 		}
 		return ret.ToArray();
+	}
+	
+	public string GetInfo() {
+		return "Type: " + label +
+			 "\nValue: " + value +
+			 "\nLevel: " + level +
+			 "\nMax shield: " + shield +
+		     " (recharge: " + shieldRecharge + "u/ms)" +
+			 "\nMax health: " + health +
+			 ((secondaryType > -1) ? "\nSecondary cooldown: " + secondaryCooldown + "ms\nSecondary Type: " + "-- TODO --" : "") +
+			 "\n" + ((hasWeapon) ? "Weapon damage:" + shotDamage + "\nWeapon cooldown:" + shotCooldown + "ms" : "No weapon");
 	}
 	
 	#if UNITY_EDITOR

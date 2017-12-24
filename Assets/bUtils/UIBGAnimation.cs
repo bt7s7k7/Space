@@ -1,6 +1,8 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+#if UNITY_EDITOR
 using UnityEditor;
+#endif
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -53,6 +55,15 @@ public class UIBGAnimation : MonoBehaviour {
 		} else if (animationTimer > fadeTime * 2 + moveTime) {
 			screens[target].fade.alpha = 1;
 			if (setGameObjectAcive) screens[target].fade.gameObject.SetActive(true);
+		}
+	}
+	
+	public void Reset() {
+		target = startingScreen;
+		source = startingScreen;
+		animationTimer = fadeTime * 2 + moveTime + 1;
+		foreach (var screen in screens) {
+			screen.fade.gameObject.SetActive(false);
 		}
 	}
 	

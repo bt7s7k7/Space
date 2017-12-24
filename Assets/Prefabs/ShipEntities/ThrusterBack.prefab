@@ -86,6 +86,7 @@ MonoBehaviour:
   logo: {fileID: 0}
   type: 1
   parent: {fileID: 0}
+  baseEmisMul: 0
 --- !u!198 &198510889385898768
 ParticleSystem:
   m_ObjectHideFlags: 1
@@ -93,7 +94,7 @@ ParticleSystem:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1833946883275642}
   serializedVersion: 5
-  lengthInSec: 5
+  lengthInSec: 100000
   simulationSpeed: 1
   looping: 1
   prewarm: 0
@@ -140,7 +141,7 @@ ParticleSystem:
       m_PreInfinity: 2
       m_PostInfinity: 2
       m_RotationOrder: 4
-  moveWithTransform: 1
+  moveWithTransform: 0
   moveWithCustomTransform: {fileID: 0}
   scalingMode: 1
   randomSeed: -1320056265

@@ -31,7 +31,7 @@ public class CharacterCreator : MonoBehaviour {
 		
 	}
 	
-	void Start() {
+	public void Start() {
 		iconColorSlider.maxValue = bgSlider.maxValue = GameManager.instance.colorPallete.Length - 1;
 		bgSlider.maxValue = bgSlider.maxValue = GameManager.instance.colorPallete.Length - 2;
 		iconTypeSlider.maxValue = GameManager.instance.playerIcons.Length - 1;
@@ -41,7 +41,7 @@ public class CharacterCreator : MonoBehaviour {
 		nameField.text = PlayerPrefs.GetString(namePref,defName);
 	}
 	
-	void Update() {
+	public void Update() {
 		PlayerPrefs.SetInt(bgColorPref,(int)bgSlider.value + 1);
 		PlayerPrefs.SetInt(iconColorPref,(int)iconColorSlider.value);
 		PlayerPrefs.SetInt(iconTypePref,(int)iconTypeSlider.value);

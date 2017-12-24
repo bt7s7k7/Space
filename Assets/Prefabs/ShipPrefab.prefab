@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212854793656674786}
   - component: {fileID: 60612541109691714}
   - component: {fileID: 114518245013215916}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Detail
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -38,7 +38,7 @@ GameObject:
   m_Component:
   - component: {fileID: 4993840973282546}
   - component: {fileID: 212207180796013190}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Overlay
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,7 +60,7 @@ GameObject:
   - component: {fileID: 114069081485477012}
   - component: {fileID: 114573298170870440}
   - component: {fileID: 114428753156829318}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: ShipPrefab
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -78,7 +78,7 @@ GameObject:
   - component: {fileID: 212737422780456488}
   - component: {fileID: 60126811939979112}
   - component: {fileID: 114567022772164362}
-  m_Layer: 0
+  m_Layer: 10
   m_Name: Color
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -118,7 +118,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1860492646510860}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 33.23954, y: -9.910812, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4097534637969244}
@@ -171,7 +171,7 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -215,7 +215,7 @@ PolygonCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_UsedByEffector: 0
-  m_UsedByComposite: 1
+  m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -255,105 +255,9 @@ CompositeCollider2D:
   m_GeometryType: 0
   m_GenerationType: 0
   m_EdgeRadius: 0.05
-  m_ColliderPaths:
-  - m_Collider: {fileID: 60612541109691714}
-    m_ColliderPaths:
-    - - X: -937500
-        Y: 6562500
-      - X: 937500
-        Y: 6562500
-      - X: 2812500
-        Y: 7187500
-      - X: 2812500
-        Y: 9687500
-      - X: 2187500
-        Y: 10937500
-      - X: 1562500
-        Y: 11562500
-      - X: -937500
-        Y: 11562500
-      - X: -2187500
-        Y: 10937500
-      - X: -2812500
-        Y: 10312500
-      - X: -2812500
-        Y: 8437500
-      - X: -2812500
-        Y: 7187500
-  - m_Collider: {fileID: 60126811939979112}
-    m_ColliderPaths:
-    - - X: -5937500
-        Y: -10937500
-      - X: -4687500
-        Y: -7812500
-      - X: -2812500
-        Y: -5937500
-      - X: -1562500
-        Y: -5312500
-      - X: 937500
-        Y: -5312500
-      - X: 2812500
-        Y: -5937500
-      - X: 4687500
-        Y: -7812500
-      - X: 5937500
-        Y: -10937500
-      - X: 5937500
-        Y: 4687500
-      - X: 5312500
-        Y: 7812500
-      - X: 4062500
-        Y: 9062500
-      - X: 3437500
-        Y: 9062500
-      - X: 3437500
-        Y: 7187500
-      - X: 937500
-        Y: 5937500
-      - X: -937500
-        Y: 5937500
-      - X: -2812500
-        Y: 6562500
-      - X: -3437500
-        Y: 8437500
-      - X: -3437500
-        Y: 9062500
-      - X: -4687500
-        Y: 8437500
-      - X: -5937500
-        Y: 5312500
+  m_ColliderPaths: []
   m_CompositePaths:
-    m_Paths:
-    - - {x: 0.28125, y: 0.71875}
-      - {x: 0.28125, y: 0.96875}
-      - {x: 0.21875, y: 1.09375}
-      - {x: 0.15625, y: 1.15625}
-      - {x: -0.09375, y: 1.15625}
-      - {x: -0.21875, y: 1.09375}
-      - {x: -0.28125, y: 1.03125}
-      - {x: -0.28125, y: 0.71875}
-      - {x: -0.09375, y: 0.65625}
-      - {x: 0.09375, y: 0.65625}
-    - - {x: 0.59375, y: 0.46875}
-      - {x: 0.53125, y: 0.78125}
-      - {x: 0.40625, y: 0.90625}
-      - {x: 0.34375, y: 0.90625}
-      - {x: 0.34375, y: 0.71875}
-      - {x: 0.09375, y: 0.59375}
-      - {x: -0.09375, y: 0.59375}
-      - {x: -0.28125, y: 0.65625}
-      - {x: -0.34375, y: 0.84375}
-      - {x: -0.34375, y: 0.90625}
-      - {x: -0.46875, y: 0.84375}
-      - {x: -0.59375, y: 0.53125}
-      - {x: -0.59375, y: -1.09375}
-      - {x: -0.46875, y: -0.78125}
-      - {x: -0.28125, y: -0.59375}
-      - {x: -0.15625, y: -0.53125}
-      - {x: 0.09375, y: -0.53125}
-      - {x: 0.28125, y: -0.59375}
-      - {x: 0.46875, y: -0.78125}
-      - {x: 0.59375, y: -1.09375}
+    m_Paths: []
   m_VertexDistance: 0.0005
 --- !u!114 &114069081485477012
 MonoBehaviour:
@@ -406,15 +310,18 @@ MonoBehaviour:
     side: 0
     playerOwner: -1
   prototype: {fileID: 0}
-  hull: 0
-  shields: 0
+  health: 0
+  shield: 0
   secondaryAmount: 0
   lastShot: 0
   lastSecondary: 0
+  desiredAngle: 0
   detail: {fileID: 212854793656674786}
   overlay: {fileID: 212207180796013190}
   color: {fileID: 212737422780456488}
   focus: {fileID: 114428753156829318}
+  rig: {fileID: 50451990160058436}
+  rotOffset: 0
   entities: []
 --- !u!114 &114428753156829318
 MonoBehaviour:
@@ -432,14 +339,17 @@ MonoBehaviour:
   canMove: 1
   canFire: 0
   canSecondary: 0
-  canPlayerControll: 1
-  fireDirection: {x: 0, y: 0, z: 0}
-  moveDirection: {x: 0, y: 0, z: 0}
+  canPlayerFocus: 1
+  camSize: 5
+  fireDirection: {x: 0, y: 0}
+  moveDirection: {x: 0, y: 0}
   fire: 0
   secondaryFire: 0
   menu: 0
   secondaryAmount: 0
   secondaryCooldown: 0
+  shield: 0
+  health: 0
 --- !u!114 &114518245013215916
 MonoBehaviour:
   m_ObjectHideFlags: 1

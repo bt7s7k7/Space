@@ -8,6 +8,8 @@ public class BEditorScripter : MonoBehaviour {
 	public UnityEvent onStart;
 	public UnityEvent onUpdate;
 	public UnityEvent onFixedUpdate;
+	public UnityEvent onDisable;
+	public UnityEvent onEnable;
 	public UnityEvent onEvent;
 	
 	void Awake() {
@@ -24,6 +26,13 @@ public class BEditorScripter : MonoBehaviour {
 	
 	void FixedUpdate() {
 		onFixedUpdate.Invoke();
+	}
+	
+	void OnEnable() {
+		onEnable.Invoke();
+	}
+	void OnDisable() {
+		onDisable.Invoke();
 	}
 	
 	public void Relay() {

@@ -42,4 +42,9 @@ public class NetworkHelper : MonoBehaviour {
 		if (discoveryInit) discovery.StartAsServer();
 		NetworkManager.singleton.StartHost();
 	}
+	
+	public void Disconnect() {
+		RestartDiscovery();
+		NetworkManager.singleton.StopHost();
+	}
 }
