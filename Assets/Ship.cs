@@ -13,13 +13,13 @@ public class Ship : NetworkBehaviour {
 	public int lastShot;
 	public int lastSecondary;
 	public float desiredAngle;
+	public Targetable target;
 	[Space]
 	public SpriteRenderer detail;
 	public SpriteRenderer overlay;
 	public SpriteRenderer color;
 	public Focusable focus;
 	public Rigidbody2D rig;
-	public float rotOffset;
 	
 	public ShipEntity[] entities;
 	
@@ -31,6 +31,8 @@ public class Ship : NetworkBehaviour {
 		shield = 0;
 		secondaryAmount = p_.maxSecondary;
 		RpcInit(faction,source);
+		target.label = p_.label;
+		target.owner = owner;
 	}
 	
 	void Update() {
@@ -43,20 +45,29 @@ public class Ship : NetworkBehaviour {
 				focus.health = health / (float)prototype.health;
 				focus.shield = shield / (float)prototype.shield;
 				
-				float angle = transform.rotation.eulerAngles.z / 180 * Mathf.PI;
+				float angle = (rig.rotation / 180 * Mathf.PI) % (Mathf.PI * 2);
+				if (angle < 0) angle += Mathf.PI * 2;
 				Vector2 facing = new Vector2(Mathf.Sin(angle),Mathf.Cos(angle));
-				float diff = Vector2.Dot(facing,focus.moveDirection);
+				float diff = Vector2.Dot(facing,focus.moveDirection.normalized);
 				Vector2 apply = Vector2.Lerp(focus.moveDirection * prototype.lateralSpeed,focus.moveDirection * prototype.forwardSpeed,Mathf.Clamp(diff,0,1));
 				if (Vector2.Dot(apply.normalized,rig.velocity.normalized) < 0.99) {
 					rig.AddForce(rig.velocity.normalized * -Mathf.Min(prototype.slowdownSpeed,rig.velocity.magnitude) * Time.deltaTime * 60);
 				}
 				if (apply.magnitude != 0) {
-					desiredAngle = -Mathf.Atan2(apply.normalized.x,apply.normalized.y) + rotOffset;
+					desiredAngle = -Mathf.Atan2(apply.normalized.x,apply.normalized.y);
+					if (desiredAngle < 0) desiredAngle += Mathf.PI * 2;
 					rig.AddForce(apply * Time.deltaTime * 60);
 				}
-				Vector2 desiredFacing = new Vector2(Mathf.Sin(desiredAngle),Mathf.Cos(desiredAngle));
-				Vector3 newFacing = Vector3.Slerp(new Vector3(facing.x,facing.y,0),new Vector3(desiredFacing.x,desiredFacing.y,0),prototype.rotationSpeed / ((Vector2.Dot(facing,desiredFacing) + 1) / 2));
-				transform.rotation = Quaternion.Euler(new Vector3(0,0,Mathf.Atan2(newFacing.x,newFacing.y) / Mathf.PI * 180));
+				
+				diff = Mathf.DeltaAngle(angle / Mathf.PI * 180,desiredAngle / Mathf.PI * 180);
+				/*if (Mathf.Abs(diff) < prototype.rotationSpeed) {
+					rig.angularVelocity = ((diff < 0) ? -1 : 1) * prototype.rotationSpeed;
+					Debug.Log("Normal");
+				} else {
+					Debug.Log("Small");
+				}*/
+				rig.angularVelocity = Mathf.Clamp(diff * 20,-prototype.rotationSpeed,prototype.rotationSpeed);
+				//rig.angularVelocity = Mathf.Min(((B.NormalizeAngle( - ) > Mathf.PI) ? -1 : 1) * prototype.rotationSpeed);
 				
 				foreach (ShipEntity entity in entities) {
 					entity.SetThrust(apply.normalized);

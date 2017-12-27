@@ -6,6 +6,7 @@ using UnityEngine.Networking;
 public class NetworkHelper : MonoBehaviour {
 	public NetworkDiscovery discovery;
 	public bool discoveryInit = false;
+	public int discoveryResults = 0;
 	
 	void Start() {
 		RestartDiscovery();
@@ -20,15 +21,17 @@ public class NetworkHelper : MonoBehaviour {
 	public List<NetworkBroadcastResult> GetDiscoveryResults() {
 		List<NetworkBroadcastResult> ret = new List<NetworkBroadcastResult>();
 		if (discoveryInit) {
+			discoveryResults = 0;
 			foreach (KeyValuePair<string,NetworkBroadcastResult> kv in discovery.broadcastsReceived) {
 				ret.Add(kv.Value);
+				discoveryResults += 1;
 			}
 		}
 		return ret;
 	}
 	
 	void DebugCall() {
-		BDebug.Write("NetDiscovery:" + ((discoveryInit) ? ((discovery.isServer) ? "Server" : ((discovery.isClient) ? "Client" : "Ready")) : "Offline"));
+		BDebug.Write("NetDiscovery:" + ((discoveryInit) ? ((discovery.isServer) ? "Server" : ((discovery.isClient) ? "Client Found: " + discoveryResults : "Ready")) : "Offline"));
 	}
 	
 	public void Connect(string ip) {

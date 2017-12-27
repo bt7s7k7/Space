@@ -8,6 +8,7 @@ public class Station : NetworkBehaviour {
 	public TradeItem[] items;
 	public Focusable focusable;
 	public Transform shipSpawnpoint;
+	public Targetable target;
 	
 	public static Dictionary<string,Station> stations = new Dictionary<string,Station>();
 	
@@ -17,6 +18,12 @@ public class Station : NetworkBehaviour {
 	
 	void OnDisable() {
 		stations.Remove(label);
+	}
+	
+	void Start() {
+		if (isServer) {
+			target.label = label;
+		}
 	}
 	
 	void Update() {

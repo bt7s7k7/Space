@@ -35,6 +35,7 @@ public class GameManager : MonoBehaviour {
 	public StationMenu stationMenu;
 	public List<ShipSO> ships = new List<ShipSO>();
 	public NetworkHelper netHelp;
+	public Transform targetPointer;
 	[Header("Data")]
 	public bool playMode;
 	

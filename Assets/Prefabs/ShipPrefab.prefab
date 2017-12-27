@@ -60,6 +60,7 @@ GameObject:
   - component: {fileID: 114069081485477012}
   - component: {fileID: 114573298170870440}
   - component: {fileID: 114428753156829318}
+  - component: {fileID: 114847923479482270}
   m_Layer: 10
   m_Name: ShipPrefab
   m_TagString: Untagged
@@ -316,12 +317,12 @@ MonoBehaviour:
   lastShot: 0
   lastSecondary: 0
   desiredAngle: 0
+  target: {fileID: 114847923479482270}
   detail: {fileID: 212854793656674786}
   overlay: {fileID: 212207180796013190}
   color: {fileID: 212737422780456488}
   focus: {fileID: 114428753156829318}
   rig: {fileID: 50451990160058436}
-  rotOffset: 0
   entities: []
 --- !u!114 &114428753156829318
 MonoBehaviour:
@@ -437,6 +438,26 @@ MonoBehaviour:
   m_SnapThreshold: 5
   m_InterpolateRotation: 1
   m_InterpolateMovement: 1
+--- !u!114 &114847923479482270
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1860492646510860}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ac14f3d54a147314394832ddf5e17668, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  label: 
+  owner:
+    label: 
+    bgColor: 0
+    iconColor: 0
+    iconType: 0
+    side: 0
+    playerOwner: -1
+  type: 0
 --- !u!210 &210753701395876432
 SortingGroup:
   m_ObjectHideFlags: 1

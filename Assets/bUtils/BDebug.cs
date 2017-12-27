@@ -50,6 +50,10 @@ public class BDebug : MonoBehaviour {
 		lines.Clear();
 	}
 	
+	public void SetDraw(bool newDraw) {
+		draw = newDraw;
+	}
+	
 	public static void Write(string text) {
 		instance.lines.Add(text);
 	}

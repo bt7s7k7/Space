@@ -107,12 +107,24 @@ public static class B {
 		}
 	}
 	
+	// @function #:SpriteToTexture
+	// @param sprite Sprite Sprite to transform
+	// @return Texture2D Transformed texture
 	static public Texture2D SpriteToTexture(Sprite sprite) {
 		Rect rect = sprite.rect;
 		Texture2D ret = new Texture2D((int)rect.width,(int)rect.height);
 		ret.SetPixels(sprite.texture.GetPixels((int)rect.x,(int)rect.y,(int)rect.width,(int)rect.height));
 		ret.Apply();
 		return ret;
+	}
+	
+	// @function #:NormalizeAngle
+	// @param a float Angle to normalize
+	// @return float Normalized angle (0 - PI * 2)
+	
+	static public float NormalizeAngle(float a) {
+		if (a < 0) {a += Mathf.PI * 2;}
+		return a;
 	}
 	
 	#if UNITY_EDITOR

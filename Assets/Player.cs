@@ -10,6 +10,8 @@ public class Player : NetworkBehaviour {
 	public Focusable focused;
 	public bool spectating;
 	public bool openMenu;
+	public Targetable target;
+	public float targetPointerDistance = 50;
 	
 	void Start() {
 		if (isLocalPlayer) {
@@ -58,9 +60,16 @@ public class Player : NetworkBehaviour {
 				
 				focused.CmdControl(movement,fireDir,CnInputManager.GetButtonDown("Fire2"),openMenu);
 				openMenu = false;
+				if (target != null) {
+					GameManager.instance.targetPointer.gameObject.SetActive(true);
+					Vector3 dir = (target.transform.position - focused.transform.position).normalized;
+					GameManager.instance.targetPointer.localPosition = dir * targetPointerDistance;
+					GameManager.instance.targetPointer.rotation = Quaternion.Euler(new Vector3(0,0,Mathf.Atan2(-dir.x,dir.y) / Mathf.PI * 180));
+					if (focused.GetComponent<Targetable>() == target) target = null;
+				} else {
+					GameManager.instance.targetPointer.gameObject.SetActive(false);
+				}
 			}
-			
-			
 		}
 	}
 }

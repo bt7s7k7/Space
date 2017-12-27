@@ -28,6 +28,7 @@ MonoBehaviour:
   lateralSpeed: 10
   maxSpeed: 5
   slowdownSpeed: 10
+  rotationSpeed: 100
   entities:
   - type: 0
     pos: {x: 23, y: 32}

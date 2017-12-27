@@ -45,7 +45,12 @@ MonoBehaviour:
     iconColor: 0
     iconType: 0
     side: 0
-    playerOwned: 0
+    playerOwner: -1
+  focused: {fileID: 0}
+  spectating: 0
+  openMenu: 0
+  target: {fileID: 0}
+  targetPointerDistance: 100
 --- !u!114 &114601705767401574
 MonoBehaviour:
   m_ObjectHideFlags: 1
